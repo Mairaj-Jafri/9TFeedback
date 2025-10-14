@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Project Feedback</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            width: 90%;
+            max-width: 1200px;
+            height: 85vh;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 60px;
+            display: none;
+            flex-direction: column;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: flex;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #764ba2;
+            font-size: 36px;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #667eea;
+            font-size: 24px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .quote {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 15px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .best-practice {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .best-practice h3 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+
+        ul {
+            margin-left: 30px;
+            margin-top: 15px;
+        }
+
+        li {
+            margin: 12px 0;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .checkmark {
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        button {
+            background: white;
+            border: 2px solid #667eea;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .issue-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .issue-box h3 {
+            color: #e65100;
+            margin-top: 0;
+        }
+
+        .success-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .emoji {
+            font-size: 48px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .grid-item {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 3px solid #667eea;
+        }
+
+        .final-thoughts {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .final-thoughts h3 {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="emoji">📊</div>
+            <h1>Group Project Feedback</h1>
+            <p class="subtitle">Learning from Our Experiences</p>
+            <p class="subtitle" style="font-size: 18px; margin-top: 40px;">Year 9 Maths & Stats</p>
+            <p style="text-align: center; color: #888; margin-top: 60px;">Thanks for your honest reflections! Let's talk about what we learned and how to improve next time.</p>
+            <div class="slide-number">1 / 11</div>
+        </div>
+
+        <!-- Slide 2: Issue 1 -->
+        <div class="slide">
+            <h2>Issue #1: Unequal Workload</h2>
+            <div class="issue-box">
+                <h3>What Happened:</h3>
+                <p>Some students did most of the work while others contributed very little.</p>
+            </div>
+            <div class="quote">"I felt like I did most of the work for the group because [teammates] weren't always focused and I had to keep reminding them to help me"</div>
+            <div class="quote">"I didn't do anything else except for the introduction... I could participate in more roles to help my team members"</div>
+            <div class="slide-number">2 / 11</div>
+        </div>
+
+        <!-- Slide 3: Solution 1 -->
+        <div class="slide">
+            <h2>Solution: Share the Load Fairly</h2>
+            <div class="best-practice">
+                <h3>Best Practices:</h3>
+                <ul>
+                    <li><span class="checkmark">✓</span> Create a clear task list at the start - who's doing what and when</li>
+                    <li><span class="checkmark">✓</span> Check in regularly - quick 2-minute meetings each lesson</li>
+                    <li><span class="checkmark">✓</span> Speak up early - feeling overwhelmed OR not sure what to do? Say something!</li>
+                    <li><span class="checkmark">✓</span> Be honest with yourself - if you're not pulling your weight, step up</li>
+                </ul>
+            </div>
+            <p style="margin-top: 30px; font-style: italic; color: #666;">💡 Your groupmates will notice and remember who contributed fairly</p>
+            <div class="slide-number">3 / 11</div>
+        </div>
+
+        <!-- Slide 4: Issue 2 -->
+        <div class="slide">
+            <h2>Issue #2: Poor Communication</h2>
+            <div class="issue-box">
+                <h3>What Happened:</h3>
+                <p>Groups struggled to stay on the same page, especially when people were absent.</p>
+            </div>
+            <div class="quote">"My group members didn't help me catch up with what we were supposed to be doing... I also didn't have much access to the shared work"</div>
+            <div class="quote">"My teammate didn't tell me how to do the work... [she] would not let me do anything because I did not do it right and she did not explain"</div>
+            <div class="slide-number">4 / 11</div>
+        </div>
+
+        <!-- Slide 5: Solution 2 -->
+        <div class="slide">
+            <h2>Solution: Communicate Better</h2>
+            <div class="best-practice">
+                <h3>Best Practices:</h3>
+                <ul>
+                    <li><span class="checkmark">✓</span> Use a group chat - keep everyone updated</li>
+                    <li><span class="checkmark">✓</span> Share access early - everyone needs to see documents from day one</li>
+                    <li><span class="checkmark">✓</span> Explain, don't just do - take 2 minutes to show someone how</li>
+                    <li><span class="checkmark">✓</span> Ask questions - "Can you explain what I need to do?" is perfectly fine!</li>
+                    <li><span class="checkmark">✓</span> If you're away, reach out - message your group to catch up</li>
+                </ul>
+            </div>
+            <div class="slide-number">5 / 11</div>
+        </div>
+
+        <!-- Slide 6: Issue 3 & 4 -->
+        <div class="slide">
+            <h2>Issues #3 & #4</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <h3 style="margin-top: 0;">⏰ Time Management</h3>
+                    <p style="margin: 15px 0;">Groups felt stressed and rushed</p>
+                    <div class="quote" style="background: white; margin: 10px 0;">"At times, I left tasks until later than I should have"</div>
+                    <p style="font-weight: bold; color: #667eea; margin-top: 15px;">Solution: Start immediately, set mini-deadlines, send surveys ASAP</p>
+                </div>
+                <div class="grid-item">
+                    <h3 style="margin-top: 0;">💪 Using Strengths</h3>
+                    <p style="margin: 15px 0;">Not thinking about who's best for each task</p>
+                    <div class="quote" style="background: white; margin: 10px 0;">"We used our strengths to the fullest"</div>
+                    <p style="font-weight: bold; color: #667eea; margin-top: 15px;">Solution: Talk about strengths, assign tasks wisely</p>
+                </div>
+            </div>
+            <div class="slide-number">6 / 11</div>
+        </div>
+
+        <!-- Slide 7: Issue 5 -->
+        <div class="slide">
+            <h2>Issue #5: Difficult Group Members</h2>
+            <div class="issue-box">
+                <h3>The Reality:</h3>
+                <p>Some people didn't contribute or caused frustration.</p>
+            </div>
+            <div class="quote">"[Teammate] didn't do any work, and we had to beg him to do the introduction, conclusion and analysis"</div>
+            <div class="quote">"We couldn't get one of our group members to produce their part of the assignment"</div>
+            <div class="slide-number">7 / 11</div>
+        </div>
+
+        <!-- Slide 8: Solution 5 -->
+        <div class="slide">
+            <h2>Solution: Address It Early</h2>
+            <div class="best-practice">
+                <h3>Best Practices:</h3>
+                <ul>
+                    <li><span class="checkmark">✓</span> Talk to them first - "Hey, we're worried. Can we help you get started?"</li>
+                    <li><span class="checkmark">✓</span> Give clear, small tasks - big jobs can be overwhelming</li>
+                    <li><span class="checkmark">✓</span> Come to me early - don't wait until the last day</li>
+                    <li><span class="checkmark">✓</span> Document who does what - reflections help me understand</li>
+                </ul>
+            </div>
+            <p style="margin-top: 30px; padding: 20px; background: #fff3e0; border-radius: 10px; font-weight: bold;">
+                ⚠️ For those not contributing: You're only hurting yourself. People remember who they can rely on.
+            </p>
+            <div class="slide-number">8 / 11</div>
+        </div>
+
+        <!-- Slide 9: Issue 6 -->
+        <div class="slide">
+            <h2>Issue #6: Being Away</h2>
+            <div class="issue-box">
+                <h3>What Happened:</h3>
+                <p>Tournaments, trips, and absences made group work harder.</p>
+            </div>
+            <div class="quote">"I was away on tournament week when this assessment began"</div>
+            <div class="best-practice">
+                <h3>Best Practices:</h3>
+                <ul>
+                    <li><span class="checkmark">✓</span> Tell your group immediately when you know you'll be away</li>
+                    <li><span class="checkmark">✓</span> Do work before/after your absence</li>
+                    <li><span class="checkmark">✓</span> Stay connected - check messages, contribute ideas</li>
+                    <li><span class="checkmark">✓</span> Group: be understanding and help them catch up</li>
+                </ul>
+            </div>
+            <div class="slide-number">9 / 11</div>
+        </div>
+
+        <!-- Slide 10: What Worked -->
+        <div class="slide">
+            <h2>What Actually Worked Well! 🎉</h2>
+            <div class="success-box">
+                <h3 style="color: #1565c0; margin-top: 0;">Successful Groups:</h3>
+                <div class="quote" style="background: white;">"Me and my group did very well... Our biggest strength was communication"</div>
+                <div class="quote" style="background: white;">"I got along really well with my group... we could split tasks, share ideas"</div>
+            </div>
+            <div class="best-practice">
+                <h3>They succeeded because they:</h3>
+                <ul>
+                    <li><span class="checkmark">✓</span> Communicated regularly</li>
+                    <li><span class="checkmark">✓</span> Respected each other's ideas</li>
+                    <li><span class="checkmark">✓</span> Divided work fairly</li>
+                    <li><span class="checkmark">✓</span> Stayed focused during class</li>
+                    <li><span class="checkmark">✓</span> Supported each other</li>
+                </ul>
+            </div>
+            <div class="slide-number">10 / 11</div>
+        </div>
+
+        <!-- Slide 11: Final Thoughts -->
+        <div class="slide">
+            <h2>Final Thoughts</h2>
+            <div class="final-thoughts">
+                <h3>Remember This:</h3>
+                <p style="font-size: 20px; line-height: 1.8; margin: 20px 0;">
+                    "I have learnt that it may be hard working in a group that you're not familiar with, and that it will happen again and again. I just need to find a way to work together with my group in a way that works."
+                </p>
+            </div>
+            <div class="best-practice">
+                <h3>For Next Time:</h3>
+                <ul>
+                    <li><span class="checkmark">✓</span> Start early</li>
+                    <li><span class="checkmark">✓</span> Communicate constantly</li>
+                    <li><span class="checkmark">✓</span> Share the work fairly</li>
+                    <li><span class="checkmark">✓</span> Ask for help when needed</li>
+                    <li><span class="checkmark">✓</span> Actually do your part</li>
+                </ul>
+            </div>
+            <p style="text-align: center; font-size: 22px; margin-top: 40px; font-weight: bold; color: #667eea;">
+                Good effort, everyone! Let's make the next one even better! 🙂
+            </p>
+            <div class="slide-number">11 / 11</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+        <button id="nextBtn" onclick="changeSlide(1)">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slides.length - 1;
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && currentSlide > 0) changeSlide(-1);
+            if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) changeSlide(1);
+        });
+
+        // Initialize
+        prevBtn.disabled = true;
+    </script>
+</body>
+</html>
